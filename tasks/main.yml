@@ -1,2 +1,19 @@
 ---
 # tasks file for ansible-role-softlayer-deploy
+  - name: Build instance request
+    local_action:
+      module: sl_vm
+      state: "{{ STATE }}"
+      hostname: ansible-test-1
+      domain: test.com
+      datacenter: tor01
+      tags: ansible-module-test
+      hourly: True
+      private: False
+      dedicated: False
+      local_disk: True
+      cpus: 1
+      memory: 1024
+      disks: [25]
+      os_code: CENTOS_7_64
+      wait: False
